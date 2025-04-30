@@ -17,6 +17,8 @@ public class ExampleApplication {
 		//FirstClass firstClass = new FirstClass();
 		MyFirstService firstService = ctx.getBean(MyFirstService.class);
 		System.out.println(firstService.tellStory());
+		System.out.println(firstService.getJavaVersion());
+		System.out.println(firstService.readProperties());
 	}
 
 	//  Converting this class to Bean class so it is fully managed by Spring Framework

@@ -2,6 +2,7 @@ package com.example.example;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -10,6 +11,11 @@ public class MyFirstService {
 //    @Autowired // Field injection - this is not recommended , constructor injection or setter injection is recommended
 //    @Qualifier("SecondBean")
     private FirstClass firstClass;
+    private Environment environment;
+
+    public MyFirstService(Environment environment) {
+        this.environment = environment;
+    }
 
     @Autowired // Setter injection
     public void setFirstClass(@Qualifier("ThirdBean") FirstClass firstClass) {
@@ -22,7 +28,15 @@ public class MyFirstService {
 //        this.firstClass = firstClass;
 //    }
 
+    public String getJavaVersion() {
+        return environment.getProperty("java.version");
+    }
+
+    public String readProperties() {
+        return environment.getProperty("spring.application.name");
+    }
+
     public String tellStory() {
-        return "The dependency is sayng"+firstClass.sayHello();
+        return "The dependency is saying"+firstClass.sayHello();
     }
 }
