@@ -23,6 +23,6 @@ public class MyFirstService {
 //    }
 
     public String tellStory() {
-        return "The dependency is saying"+firstClass.sayHello();
+        return "The dependency is sayng"+firstClass.sayHello();
     }
 }
