@@ -1,4 +1,4 @@
-package com.example.example;
+package com.example.example.studentprofile;
 
 /*
 DTO stands for Data Transfer Objects.

@@ -1,8 +1,11 @@
-package com.example.example;
+package com.example.example.student;
 
 // This class represents a table in database
 // Entity refers to a Java object that is meant to be persisted in a relational database.
 
+import com.example.example.school.School;
+import com.example.example.studentprofile.StudentProfile;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -27,8 +30,9 @@ public class Student {
     @OneToOne(mappedBy = "student", cascade =  CascadeType.ALL)
     private StudentProfile studentProfile;
 
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "school_id")
+    @JsonBackReference
     private School school;
 
     public School getSchool() {
