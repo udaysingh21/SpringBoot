@@ -35,6 +35,7 @@ public class Student {
     @JsonBackReference
     private School school;
 
+
     public School getSchool() {
         return school;
     }
@@ -62,7 +63,7 @@ public class Student {
         this.age = age;
     }
 
-    public Integer getId() {
+    public Integer getId(int i) {
         return id;
     }
 

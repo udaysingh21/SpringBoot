@@ -4,10 +4,14 @@ import com.example.example.school.School;
 import org.springframework.stereotype.Service;
 
 @Service
-// Service Layers contains Business Logic, complex logic and provides separation of concerns
 public class StudentMapper {
-    // creating a function that converts object of StudentDto type into object of Student type so that we can use .save()
+
+    // Function that converts a StudentDto to a Student object
     public Student toStudent(StudentDto dto) {
+        if (dto == null) {
+            throw new IllegalArgumentException("The StudentDto should not be null");
+        }
+
         var student = new Student();
         student.setFname(dto.fname());
         student.setLname(dto.lname());
@@ -20,14 +24,16 @@ public class StudentMapper {
         return student;
     }
 
-    // creating this function to get a StudentDto response
+    // Function to create a StudentResponseDto from Student object
     public StudentResponseDto studentResponseDto(Student student) {
+        if (student == null) {
+            throw new IllegalArgumentException("Student object cannot be null");
+        }
+
         return new StudentResponseDto(
                 student.getFname(),
                 student.getLname(),
                 student.getEmail()
         );
     }
-
-
 }
